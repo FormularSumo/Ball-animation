@@ -86,6 +86,7 @@ Ball_2 = ball('Ball 2', 1, 380, 280, 420, 320,'white','red')
 
 
 
+
 #track = 0
 
 # def animation(track,ball1_direction):
