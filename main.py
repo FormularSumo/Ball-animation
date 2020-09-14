@@ -2,7 +2,7 @@ from tkinter import *
 import time
 from functools import partial
 
-
+#https://www.delftstack.com/howto/python-tkinter/how-to-pass-arguments-to-tkinter-button-command/
 
 
 
@@ -88,12 +88,10 @@ Ball_2 = ball('Ball 2', 1, 380, 280, 420, 320,'white','red')
 
 
 
-# while True:
-#   time.sleep(0.02)
-#   Ball_1.update()
-#   time.sleep(0.02)
-#   Ball_2.update()
-#   time.sleep(0.02)
+
+
+Ball_1.update()
+Ball_2.update()
 
 
 
