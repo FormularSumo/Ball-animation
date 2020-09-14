@@ -9,46 +9,33 @@ from functools import partial
 def up(self):
   self.dy = -5
   self.dx = 0
-  print(self.name + " up_button pressed")
   self.update()
 
-def right(self):
-  self.dy = 0
-  self.dx = 5
-  print(self.name + " up_button pressed")
-  self.update()
-
+  
 def left(self):
   self.dy = 0
   self.dx = -5
-  print(self.name + " up_button pressed")
   self.update()
+  
+  
+def right(self):
+  self.dy = 0
+  self.dx = 5
+  self.update()
+
 
 def down(self):
   self.dy = 5
   self.dx = 0
-  print(self.name + " up_button pressed")
   self.update()
 
-
+  
 root = Tk()
 frame = Frame(root)
 frame.grid()
 
 bottomframe = Frame(root)
 bottomframe.grid(row=1, column=1, columnspan=1)
-
-# up_button = Button(frame, text="UP", fg="red", command=up)
-# up_button.grid(row=1, column=2, columnspan=1)
-
-# right_button = Button(frame, text="RIGHT", fg="red", command=right)
-# right_button.grid(row=2, column=3, columnspan=1)
-
-# left_button = Button(frame, text="LEFT", fg="red", command=left)
-# left_button.grid(row=2, column=1, columnspan=1)
-
-# down_button = Button(frame, text="DOWN", fg="red", command=down)
-# down_button.grid(row=2, column=2, columnspan=1)
 
 
 
@@ -74,7 +61,6 @@ class ball:
     self.ball = canvas.create_oval(x0,y0,x1,y1,outline = self.outline, fill = self.fill)
     canvas.pack()
 
-
     self.up_button = Button(frame, text=self.name + " UP", fg=self.fill, command=partial(up, self))
     self.up_button.grid(row=1, column=2+3*self.number, columnspan=1)
 
@@ -88,8 +74,6 @@ class ball:
     
     self.down_button = Button(frame, text=self.name + " DOWN", fg=self.fill, command=partial(down, self))
     self.down_button.grid(row=2, column=2+3*self.number, columnspan=1)
-
-
 
   def update(self):
     time.sleep(0.02)
@@ -110,8 +94,6 @@ Ball_2 = ball('Ball 2', 1, 380, 280, 420, 320,'white','red')
 #   time.sleep(0.02)
 #   Ball_2.update()
 #   time.sleep(0.02)
-
-
 
 
 
