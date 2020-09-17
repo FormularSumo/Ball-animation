@@ -5,6 +5,10 @@ from functools import partial
 #https://www.delftstack.com/howto/python-tkinter/how-to-pass-arguments-to-tkinter-button-command/
 
 
+def onKeyPress(event):
+  print(event.char)
+
+
 
 def up(self):
   self.dy = -5
@@ -47,8 +51,7 @@ canvas.pack()
 class ball:
 
 
-  def __init__(self,name,number,x0,y0,x1,y1,outline,fill):
-    self.name = name
+  def __init__(number,x0,y0,x1,y1,outline,fill):
     self.number = number
     self.dx = 0
     self.dy = 0
@@ -61,19 +64,22 @@ class ball:
     self.ball = canvas.create_oval(x0,y0,x1,y1,outline = self.outline, fill = self.fill)
     canvas.pack()
 
-    self.up_button = Button(frame, text=self.name + " UP", fg=self.fill, command=partial(up, self))
+    self.up_button = Button(frame, text="⬆️", fg=self.fill, command=partial(up, self))
     self.up_button.grid(row=1, column=2+3*self.number, columnspan=1)
 
-    self.left_button = Button(frame, text=self.name + " LEFT", fg=self.fill, command=partial(left, self))
+    self.left_button = Button(frame, text="⬅️", fg=self.fill, command=partial(left, self))
     self.left_button.grid(row=2, column=1+3*self.number, columnspan=1)
 
 
-    self.right_button = Button(frame, text=self.name + " RIGHT", fg=self.fill, command=partial(right, self))
+    self.right_button = Button(frame, text="➡️", fg=self.fill, command=partial(right, self))
     self.right_button.grid(row=2, column=3+3*self.number, columnspan=1)
 
     
-    self.down_button = Button(frame, text=self.name + " DOWN", fg=self.fill, command=partial(down, self))
+    self.down_button = Button(frame, text="⬇️", fg=self.fill, command=partial(down, self))
     self.down_button.grid(row=2, column=2+3*self.number, columnspan=1)
+
+    canvas.bind(W, partial(up,self)) 
+    canvas.pack()
 
   def update(self):
     time.sleep(0.02)
@@ -83,9 +89,8 @@ class ball:
 
 
 
-Ball_1 = ball('Ball 1', 0, 120, 260, 220, 360, 'white','blue')
-Ball_2 = ball('Ball 2', 1, 380, 280, 420, 320,'white','red')
-
+Ball_1 = ball(0, 120, 260, 220, 360, 'white','blue')
+Ball_2 = ball(1, 380, 280, 420, 320,'white','red')
 
 
 
@@ -93,6 +98,10 @@ Ball_2 = ball('Ball 2', 1, 380, 280, 420, 320,'white','red')
 Ball_1.update()
 Ball_2.update()
 
+root.bind('<KeyPress>', onKeyPress)
+
+
+root.mainloop()
 
 
 #track = 0
